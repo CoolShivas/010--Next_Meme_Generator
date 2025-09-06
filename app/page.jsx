@@ -31,6 +31,51 @@ const HomePage = () => {
     setSelectedMemes(memeImage);
   };
 
+  const downloadMemes = () => {
+    if (!selectedMemes) return;
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    (img.crossOrigin = "anonymous"), (img.src = selectedMemes.url);
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Text Styling
+      ctx.font = "bold 70px black";
+      ctx.fillStyle = "black";
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 3;
+      ctx.textAlign = "center";
+
+      // Top Text
+      ctx.strokeText(topText.toUpperCase(), canvas.width - 350, 300);
+      ctx.fillText(topText.toUpperCase(), canvas.width - 350, 300);
+
+      // Bottom Text
+      ctx.strokeText(
+        bottomText.toUpperCase(),
+        canvas.width - 350,
+        canvas.height - 200
+      );
+      ctx.fillText(
+        bottomText.toUpperCase(),
+        canvas.width - 350,
+        canvas.height - 200
+      );
+
+      // convert to image and trigger download
+      const link = document.createElement("a");
+      link.download = "meme.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+  };
+
   return (
     <>
       <div className="container text-center mt-5">
@@ -103,7 +148,9 @@ const HomePage = () => {
         {/* Ending of Input Fields for text on meme image */}
 
         {/* Starting of Download Button to dowmload the meme image */}
-        <button className="btn btn-success mt-3">Download Meme</button>
+        <button className="btn btn-success mt-3" onClick={downloadMemes}>
+          Download Meme
+        </button>
         {/* Ending of Download Button to dowmload the meme image */}
       </div>
     </>
