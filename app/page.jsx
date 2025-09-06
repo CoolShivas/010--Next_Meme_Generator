@@ -21,13 +21,24 @@ const HomePage = () => {
     fetchApi();
   }, []);
 
+  const handlerOnDropDownMemesImageChanger = (event) => {
+    const memesID = event.target.value;
+    const memeImage = meming.find((curr) => {
+      return curr.id === memesID;
+    });
+    setSelectedMemes(memeImage);
+  };
+
   return (
     <>
       <div className="container text-center mt-5">
         <h1 className="mb-4 text-primary">Meme Generator</h1>
         {/* Stating of Meme Generator Selection Dropdown */}
         <div className="mb-3">
-          <select className="form-select">
+          <select
+            className="form-select"
+            onChange={handlerOnDropDownMemesImageChanger}
+          >
             {/* <option value="meme">Meme Name 1</option>
             <option value="meme">Meme Name 2</option>
             <option value="meme">Meme Name 3</option> */}
