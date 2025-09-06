@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const HomePage = () => {
   const [meming, setMeming] = useState([]);
+  const [selectedMemes, setSelectedMemes] = useState(null);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
       // // // success: true
       // // // [[Prototype]]: Object
       setMeming(result.data.memes);
+      setSelectedMemes(result.data.memes[0]);
     };
     fetchApi();
   }, []);
@@ -42,15 +44,17 @@ const HomePage = () => {
         {/* Ending of Meme Generator Selection Dropdown */}
 
         {/* Stating of Meme Preview */}
-        <div className="position-relative d-inline-block">
-          <img
-            src="https://placehold.co/"
-            alt="meme image not found"
-            className="img-fluid rounded"
-            width={400}
-            height={400}
-          />
-        </div>
+        {selectedMemes && (
+          <div className="position-relative d-inline-block">
+            <img
+              src={selectedMemes.url}
+              alt="meme image not found"
+              className="img-fluid rounded"
+              width={400}
+              height={400}
+            />
+          </div>
+        )}
         {/* Ending of Meme Preview */}
       </div>
     </>
