@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 const HomePage = () => {
   const [meming, setMeming] = useState([]);
   const [selectedMemes, setSelectedMemes] = useState(null);
+  const [topText, setTopText] = useState("Upper Text");
+  const [bottomText, setBottomText] = useState("Bottom Text");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -64,6 +66,12 @@ const HomePage = () => {
               width={400}
               height={400}
             />
+            <p className="position-absolute top-0 start-50 translate-middle-x text-white fw-bold fs-4">
+              {topText}
+            </p>
+            <p className="position-absolute bottom-0 start-50 translate-middle-x text-white fw-bold fs-4">
+              {bottomText}
+            </p>
           </div>
         )}
         {/* Ending of Meme Preview */}
