@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 const HomePage = () => {
   const [meming, setMeming] = useState([]);
   const [selectedMemes, setSelectedMemes] = useState(null);
-  const [topText, setTopText] = useState("Upper Text");
-  const [bottomText, setBottomText] = useState("Bottom Text");
+  const [topText, setTopText] = useState("");
+  const [bottomText, setBottomText] = useState("");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -75,6 +75,32 @@ const HomePage = () => {
           </div>
         )}
         {/* Ending of Meme Preview */}
+
+        {/* Starting of Input Fields for text on meme image */}
+        <div className="row mt-3">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="top text"
+              value={topText}
+              onChange={(event) => setTopText(event.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="bottom text"
+              value={bottomText}
+              onChange={(event) => setBottomText(event.target.value)}
+            />
+          </div>
+        </div>
+        {/* Ending of Input Fields for text on meme image */}
       </div>
     </>
   );
