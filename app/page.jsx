@@ -18,9 +18,18 @@ const HomePage = () => {
 
   return (
     <>
-      <center>
-        <h1>Meme Generator</h1>
-      </center>
+      <div className="container text-center mt-5">
+        <h1 className="mb-4 text-primary">Meme Generator</h1>
+        {/* Stating of Meme Generator Selection Dropdown */}
+        <div className="mb-3">
+          <select className="form-select">
+            <option value="meme">Meme Name 1</option>
+            <option value="meme">Meme Name 2</option>
+            <option value="meme">Meme Name 3</option>
+          </select>
+        </div>
+        {/* Ending of Meme Generator Selection Dropdown */}
+      </div>
     </>
   );
 };
