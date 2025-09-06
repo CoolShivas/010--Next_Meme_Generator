@@ -101,6 +101,10 @@ const HomePage = () => {
           </div>
         </div>
         {/* Ending of Input Fields for text on meme image */}
+
+        {/* Starting of Download Button to dowmload the meme image */}
+        <button className="btn btn-success mt-3">Download Meme</button>
+        {/* Ending of Download Button to dowmload the meme image */}
       </div>
     </>
   );
